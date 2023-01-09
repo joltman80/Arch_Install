@@ -183,10 +183,15 @@ Generate the root password:
 passwd
 ```
 
-Configure pacman for parallel downloads.  Search for Parallel, uncomment the line to allow 5 parallel downloads.
+## Pacman configuration
+
+Configure pacman for parallel downloads, the PacMan progress bar and colorization.  Search for Parallel, uncomment the line to allow 5 parallel downloads.
 
 ```console
 nano /etc/pacman.conf
+Color
+ParallelDownloads = 5
+ILoveCandy
 ```
 
 Enable the MULTILIB repo by uncommenting the line.
@@ -311,7 +316,7 @@ systemctl enable bluetooth.service
 systemctl enable cups.service
 ```
 
-## Fix WatchDog error message on reboot:
+## Fix WatchDog error message on reboot
 
 Pulled from:
 
