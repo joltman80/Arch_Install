@@ -303,7 +303,7 @@ Find this line and uncomment:
 ## Install the software environment
 
 ```console
-pacman -S networkmanager network-manager-applet pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber firefox chromium ffmpeg openssl openssh htop wget iwd wireless_tools wpa_supplicant smartmontools xdg-utils fprintd xorg-server xorg-xinit mesa libva-mesa-driver libva-intel-driver intel-media-driver vulkan-intel gnome gnome-tweaks gdm gnome-software-packagekit-plugin gnome-firmware man-db man-pages bluez bluez-utils fuse htop iio-sensor-proxy intel-gpu-top mesa mesa-utils flatpak grub-customizer libva-utils mpv cifs-utils nfs-utils gvfs-smb seahorse gnome-connections vlc samba mkvtoolnix-gui mpv tlp ntfs-3g openvpn networkmanager-openvpn wireguard-tools hexchat wine winetricks wine-mono jre17-openjdk syncthing cups cups-pdf signal-desktop gnome-sound-recorder gnome-disk-utility gparted digikam breeze-icons darktable yt-dlp picard mac cuetools pacman-contrib
+pacman -S networkmanager network-manager-applet pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber firefox chromium ffmpeg openssl openssh htop wget iwd wireless_tools wpa_supplicant smartmontools xdg-utils fprintd xorg-server xorg-xinit mesa libva-mesa-driver libva-intel-driver intel-media-driver vulkan-intel gnome gnome-tweaks gdm gnome-software-packagekit-plugin gnome-firmware man-db man-pages bluez bluez-utils fuse htop iio-sensor-proxy intel-gpu-top mesa mesa-utils flatpak grub-customizer libva-utils mpv cifs-utils nfs-utils gvfs-smb seahorse gnome-connections vlc samba mkvtoolnix-gui mpv tlp ntfs-3g openvpn networkmanager-openvpn wireguard-tools hexchat wine winetricks wine-mono jre17-openjdk syncthing cups cups-pdf signal-desktop gnome-sound-recorder gnome-disk-utility gparted digikam breeze-icons darktable yt-dlp picard mac cuetools pacman-contrib reflector
 ```
 
 ## Enable essential services
@@ -315,6 +315,7 @@ systemctl enable fstrim.timer
 systemctl enable bluetooth.service
 systemctl enable cups.service
 systemctl enable paccache.timer
+systemctl enable reflector.timer
 ```
 
 ## Fix WatchDog error message on reboot
