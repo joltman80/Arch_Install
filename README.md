@@ -388,6 +388,13 @@ makepkg -si
 yay -S 1password makemkv neo-matrix-git extension-manager ipmiview ttf-ms-win10 realvnc-vnc-viewer inxi vmware-vmrc visual-studio-code-bin skypeforlinux-stable-bin gnome-browser-connector IPMIviewer syncthing-gtk epson-inkjet-printer-201113w cnrdrvcups-lb sublime-text-4 flirc-bin superpaper-git webcamoid alac-git shntool teamviwer
 ```
 
+## Enable the teamviewerd service
+
+```console
+sudo systemctl enable teamviewerd.service
+sudo systemctl start teamviewerd.service
+```
+
 ## Configure Firefox for Wayland
 
 This allows inertial scrolling in Firefox
