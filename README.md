@@ -319,22 +319,6 @@ systemctl enable reflector.timer
 systemctl enable firewalld.service
 ```
 
-## Fix WatchDog error message on reboot
-
-Pulled from:
-
-<https://gist.github.com/RobFisher/abd9b2b9fca4194ac8df112715045b61>
-
-```console
-sudo vim /etc/systemd/system.conf
-```
-
-Un-comment and replace RebootWatchdogSec line with:
-
-```console
-RebootWatchdogSec=0
-```
-
 ## Restart the system
 
 After restarting, login as your USER
