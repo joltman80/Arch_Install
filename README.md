@@ -491,3 +491,14 @@ group = "USER"
 Install the AUR VirtIO ISO Windows package into the /var/lib/libvirt/images folder
 
 yay -Sy virtio-win
+
+## Install Roon Bridge
+
+```console
+# This installs libasound required by Roon
+sudo pacman -Sy alsa-lib
+cd ~/Packages
+wget https://download.roonlabs.net/builds/roonbridge-installer-linuxx64.sh
+chmod +x roonbridge-installer-linuxx64.sh
+sudo ./roonbridge-installer-linuxx64.sh
+
