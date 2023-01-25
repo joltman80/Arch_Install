@@ -507,3 +507,21 @@ cd ~/Packages
 wget https://download.roonlabs.net/builds/roonbridge-installer-linuxx64.sh
 chmod +x roonbridge-installer-linuxx64.sh
 sudo ./roonbridge-installer-linuxx64.sh
+```
+
+Now create a new firewalld service and rich rule to allow inbound traffic from Roon Server to the new RoonBridge on the HOME zone
+
+```console
+
+sudo firewall-cmd --permanent --new-service=RoonBridge
+sudo firewall-cmd --permanent --service=RoonBridge --set-description=Inbound from RoonServer
+sudo firewall-cmd --permanent --service=RoonBridge --set-short=SVC_IN_RoonBridge
+sudo firewall-cmd --permanent --service=RoonBridge --add-port=9100-9200/tcp
+sudo firewall-cmd --permanent --service=RoonBridge --add-port=9330-9332/tcp
+sudo firewall-cmd --permanent --service=RoonBridge --add-port=9003/udp
+sudo firewall-cmd --permanent --service=RoonBridge --add-port=1900/udp
+sudo firewall-cmd --permanent --service=RoonBridge --add-protocol=igmp
+sudo firewall-cmd --permanent --zone=home --add-rich-rule='   rule family="ipv4"   source address="10.0.10.110/32"   port protocol="tcp" accept'
+sudo firewall-cmd --permanent --zone=home --add-service=RoonBridge
+sudo firewall-cmd --reload
+```
