@@ -362,6 +362,29 @@ systemctl enable syncthing.service --user
 systemctl start syncthing.service --user
 ```
 
+## Set makepkg.conf to utilize multiple threads for faster compile times
+
+Run the following command to find out the number of threads you have available
+
+```console
+nproc
+```
+
+Edit the makepkg.conf file
+
+```console
+nano /etc/makepkg.conf
+```
+
+Look for the MAKEFLAGS line and change it to your desired number of threads.  Keep in mind you might want to keep several threads available so you can multitask.
+
+```console
+#-- Make Flags: change this for DistCC/SMP systems
+MAKEFLAGS="-j12"
+```
+
+Save your changes using CTRL+x
+
 ## Configure the AUR Package Helper, YAY
 
 ```console
