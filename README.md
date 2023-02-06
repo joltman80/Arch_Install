@@ -398,7 +398,7 @@ makepkg -si
 ## Install AUR packages
 
 ```console
-yay -S 1password makemkv neo-matrix-git extension-manager ipmiview ttf-ms-win10 realvnc-vnc-viewer inxi vmware-vmrc visual-studio-code-bin skypeforlinux-stable-bin gnome-browser-connector IPMIviewer syncthing-gtk epson-inkjet-printer-201113w cnrdrvcups-lb sublime-text-4 flirc-bin superpaper-git webcamoid alac-git shntool teamviwer python37
+yay -S 1password makemkv neo-matrix-git extension-manager ipmiview ttf-ms-win10 realvnc-vnc-viewer inxi vmware-vmrc visual-studio-code-bin skypeforlinux-stable-bin gnome-browser-connector IPMIviewer syncthing-gtk epson-inkjet-printer-201113w cnrdrvcups-lb sublime-text-4 flirc-bin superpaper-git webcamoid alac-git shntool teamviwer python37 python-yattag chirp-next
 ```
 
 ## Enable the teamviewerd service
@@ -547,4 +547,10 @@ sudo firewall-cmd --permanent --service=RoonBridge --add-protocol=igmp
 sudo firewall-cmd --permanent --zone=home --add-rich-rule='   rule family="ipv4"   source address="10.0.10.110/32"   port protocol="tcp" accept'
 sudo firewall-cmd --permanent --zone=home --add-service=RoonBridge
 sudo firewall-cmd --reload
+```
+
+## Add USER to the 'uucp' group to access serial console (CHIRP-NEXT)
+
+```console
+sudo usermod -aG uucp USER
 ```
