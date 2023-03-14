@@ -303,7 +303,7 @@ Find this line and uncomment:
 ## Install the software environment
 
 ```console
-pacman -S networkmanager network-manager-applet pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber firefox chromium ffmpeg openssl openssh htop wget iwd wireless_tools wpa_supplicant smartmontools xdg-utils fprintd xorg-server xorg-xinit mesa libva-mesa-driver libva-intel-driver intel-media-driver vulkan-intel gnome gnome-tweaks gdm gnome-software-packagekit-plugin gnome-firmware man-db man-pages bluez bluez-utils fuse htop iio-sensor-proxy intel-gpu-top mesa mesa-utils flatpak grub-customizer libva-utils mpv cifs-utils nfs-utils gvfs-smb seahorse gnome-connections vlc samba mkvtoolnix-gui mpv tlp ntfs-3g openvpn networkmanager-openvpn wireguard-tools hexchat wine winetricks wine-mono jre17-openjdk syncthing cups cups-pdf signal-desktop gnome-sound-recorder gnome-disk-utility gparted digikam breeze-icons darktable yt-dlp picard mac cuetools pacman-contrib reflector firewalld inetutils wireshark p7zip
+pacman -S networkmanager network-manager-applet pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber firefox chromium ffmpeg openssl openssh htop wget iwd wireless_tools wpa_supplicant smartmontools xdg-utils fprintd xorg-server xorg-xinit mesa libva-mesa-driver libva-intel-driver intel-media-driver vulkan-intel gnome gnome-tweaks gdm gnome-software-packagekit-plugin gnome-firmware man-db man-pages bluez bluez-utils fuse htop iio-sensor-proxy intel-gpu-top mesa mesa-utils flatpak grub-customizer libva-utils mpv cifs-utils nfs-utils gvfs-smb seahorse gnome-connections vlc samba mkvtoolnix-gui mpv tlp ntfs-3g openvpn networkmanager-openvpn wireguard-tools hexchat wine winetricks wine-mono jre17-openjdk syncthing cups cups-pdf signal-desktop gnome-sound-recorder gnome-disk-utility gparted digikam breeze-icons darktable yt-dlp picard mac cuetools pacman-contrib reflector firewalld inetutils wireshark p7zip libreoffice-fresh libreoffice-extension-texmaths libreoffice-extension-writer2latex ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g noto-fonts adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts hunspell hunspell-en_us hyphen hyphen-en libmythes mythes-en
 ```
 
 ## Enable essential services
@@ -398,7 +398,7 @@ makepkg -si
 ## Install AUR packages
 
 ```console
-yay -S 1password makemkv neo-matrix-git extension-manager ipmiview ttf-ms-win10 realvnc-vnc-viewer inxi vmware-vmrc visual-studio-code-bin skypeforlinux-stable-bin gnome-browser-connector IPMIviewer syncthing-gtk epson-inkjet-printer-201113w cnrdrvcups-lb sublime-text-4 flirc-bin superpaper-git webcamoid alac-git shntool teamviwer python37 python-yattag chirp-next mullvad-vpn
+yay -S 1password makemkv neo-matrix-git extension-manager ipmiview ttf-ms-win10 realvnc-vnc-viewer inxi vmware-vmrc visual-studio-code-bin skypeforlinux-stable-bin gnome-browser-connector IPMIviewer syncthing-gtk epson-inkjet-printer-201113w cnrdrvcups-lb sublime-text-4 flirc-bin superpaper-git webcamoid alac-git shntool teamviwer python37 python-yattag chirp-next mullvad-vpn libreoffice-extension-languagetool
 ```
 
 ## Enable/Start Mullvad VPN Service
@@ -526,7 +526,18 @@ group = "USER"
 
 Install the AUR VirtIO ISO Windows package into the /var/lib/libvirt/images folder
 
+```console
 yay -Sy virtio-win
+```
+
+Download the virtio Windows XP floppy image:
+
+```console
+cd Downloads
+wget http://web.archive.org/web/20110501124422/http://alt.fedoraproject.org/pub/alt/virtio-win/latest/images/bin/virtio-win-1.1.16.vfd
+
+sudo cp virtio-win-1.1.16.vfd /var/lib/libvirt/images
+```
 
 ## Install Roon Bridge
 
