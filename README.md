@@ -259,6 +259,12 @@ Replace the default grub line with this:
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet mem_sleep_default=deep nvme.noacpi=1"
 ```
 
+Change the grub resolution so that you can actually read the text on the screen:
+
+```console
+GRUB_GFXMODE=1024x768x32
+```
+
 Now we install the grub bootloader
 
 ```console
