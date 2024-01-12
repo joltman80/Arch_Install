@@ -598,3 +598,9 @@ sudo firewall-cmd --reload
 ```console
 sudo usermod -aG uucp USER
 ```
+
+## Download HP 48 Emulation Software
+
+[This is the link](https://www.hpcalc.org/hp48/pc/emulators/) for the HP Calc website.
+
+This is the link for the Emu48 Windows software that will run in WINE.
