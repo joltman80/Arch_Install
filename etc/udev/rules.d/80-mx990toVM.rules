@@ -1,0 +1,3 @@
+# Pass-through USB URC MX-990 Remote device to VM:
+
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0525", ATTRS{idProduct}=="a4ac", TAG+="uaccess"

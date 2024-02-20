@@ -534,10 +534,11 @@ unix_sock_rw_perms = '0770'
 ...
 ```
 
-Add your user to the libvirt group:
+Add your user to the libvirt and kvm group:
 
 ```console
 sudo usermod -a -G libvirt USER
+sudo usermod -a -G kvm USER
 ```
 
 Add your user to /etc/libvirt/qemu.conf. Otherwise, QEMU will give a permission denied error when trying to access local drives.  Search for user = "libvirt-qemu" or group = "libvirt-qemu", uncomment both entries and change libvirt-qemu to your user name or ID. Once edited it should look something like below:
