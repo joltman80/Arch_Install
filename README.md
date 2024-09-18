@@ -98,7 +98,7 @@ mount /dev/nvme0n1p1 /mnt/boot/EFI
 ## Installing the initial Arch packages
 
 ```console
-pacstrap /mnt linux linux-firmware base base-devel git vim nano grub efibootmgr intel-ucode os-prober linux-headers
+pacstrap /mnt linux linux-firmware base base-devel git vim nano grub efibootmgr intel-ucode os-prober linux-headers memtest86+-efi
 ```
 
 ## Generate the initial fstab with UUIDs
@@ -309,7 +309,7 @@ Find this line and uncomment:
 ## Install the software environment
 
 ```console
-pacman -S networkmanager network-manager-applet pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber firefox chromium ffmpeg openssl openssh htop wget iwd wireless_tools wpa_supplicant smartmontools xdg-utils fprintd xorg-server xorg-xinit mesa libva-mesa-driver libva-intel-driver intel-media-driver vulkan-intel gnome gnome-tweaks gdm gnome-software-packagekit-plugin gnome-firmware man-db man-pages bluez bluez-utils fuse htop iio-sensor-proxy intel-gpu-top mesa mesa-utils flatpak grub-customizer libva-utils mpv cifs-utils nfs-utils gvfs-smb seahorse gnome-connections vlc samba mkvtoolnix-gui mpv tlp ntfs-3g openvpn networkmanager-openvpn wireguard-tools hexchat wine winetricks wine-mono jre17-openjdk jdk17-openjdk icedtea-web syncthing cups cups-pdf signal-desktop gnome-sound-recorder gnome-disk-utility gparted digikam breeze-icons darktable yt-dlp picard mac cuetools pacman-contrib reflector firewalld inetutils wireshark p7zip libreoffice-fresh libreoffice-extension-texmaths libreoffice-extension-writer2latex ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g noto-fonts adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts hunspell hunspell-en_us hyphen hyphen-en libmythes mythes-en dnsutils dconf-editor kicad gimp pdfarranger transmission-remote-gtk tesseract tesseract-data-eng libratbag piper pdfarranger
+pacman -S networkmanager network-manager-applet pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber firefox chromium ffmpeg openssl openssh htop wget iwd wireless_tools wpa_supplicant smartmontools xdg-utils fprintd xorg-server xorg-xinit mesa libva-mesa-driver libva-intel-driver intel-media-driver vulkan-intel gnome gnome-tweaks gdm gnome-software-packagekit-plugin gnome-firmware man-db man-pages bluez bluez-utils fuse htop iio-sensor-proxy intel-gpu-top mesa mesa-utils flatpak grub-customizer libva-utils mpv cifs-utils nfs-utils gvfs-smb seahorse gnome-connections vlc samba mkvtoolnix-gui mpv tlp ntfs-3g openvpn networkmanager-openvpn wireguard-tools hexchat wine winetricks wine-mono jre17-openjdk jdk17-openjdk icedtea-web syncthing cups cups-pdf signal-desktop gnome-sound-recorder gnome-disk-utility gparted digikam breeze-icons darktable yt-dlp picard mac cuetools pacman-contrib reflector firewalld inetutils wireshark p7zip libreoffice-fresh libreoffice-extension-texmaths libreoffice-extension-writer2latex ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g noto-fonts adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts hunspell hunspell-en_us hyphen hyphen-en libmythes mythes-en dnsutils dconf-editor kicad gimp pdfarranger transmission-remote-gtk tesseract tesseract-data-eng libratbag piper pdfarranger powertop
 ```
 
 ## Install KiCad's official libraries as dependencies
@@ -424,7 +424,7 @@ makepkg -si
 ## Install AUR packages
 
 ```console
-yay -S 1password makemkv neo-matrix-git extension-manager ipmiview ttf-ms-win10 realvnc-vnc-viewer inxi vmware-vmrc visual-studio-code-bin skypeforlinux-stable-bin gnome-browser-connector IPMIviewer syncthing-gtk epson-inkjet-printer-201113w cnrdrvcups-lb sublime-text-4 flirc-bin superpaper-git webcamoid alac-git shntool teamviwer python37 python-yattag chirp-next mullvad-vpn libreoffice-extension-languagetool gnome-shell-extension-media-controls ocrmypdf mqtt-explorer
+yay -S 1password makemkv neo-matrix-git extension-manager ipmiview ttf-ms-win10 realvnc-vnc-viewer inxi vmware-vmrc visual-studio-code-bin skypeforlinux-stable-bin gnome-browser-connector IPMIviewer syncthing-gtk cnrdrvcups-lb sublime-text-4 flirc-bin superpaper-git webcamoid alac-git shntool teamviwer python37 python-yattag chirp-next mullvad-vpn libreoffice-extension-languagetool gnome-shell-extension-media-controls ocrmypdf mqtt-explorer
 ```
 
 ## Enable/Start Mullvad VPN Service
@@ -605,3 +605,44 @@ sudo usermod -aG uucp USER
 [This is the link](https://www.hpcalc.org/hp48/pc/emulators/) for the HP Calc website.
 
 This is the link for the Emu48 Windows software that will run in WINE.
+
+## Configure Wireguard Client
+
+We will be setting up a wg0.conf file to import into Gnome 46+ Network Manager.  I've tried this from the GUI and it keeps closing when I have to paste in keys.  Follow these steps in the terminal on the laptop:
+
+```console
+cd ~/Documents/
+mkdir Wireguard
+cd Wireguard
+wg genkey | tee laptop-privatekey | wg pubkey > laptop-publickey
+cat laptop-privatekey
+cat laptop-publickey
+```
+
+It wouldn't hurt to copy these keys into 1Password.  Now we will create the client config file.  Gnome NetworkManager will use the name of the file as the interface name (minus the .conf).  Here we go:
+
+```console
+nano wg0.confg
+```
+
+In this file, paste in the following, making the necessary changes:
+
+```console
+[Interface]
+## Local Address : A private IP address for wg0 interface.
+Address = 10.0.15.35/32
+ListenPort = 51280
+DNS = 10.0.14.1
+
+## local client privateky
+PrivateKey = ENTER_PRIVATE_KEY_GEN'D_ABOVE HERE
+
+[Peer]
+# remote server public key
+PublicKey = tvfcv5AKDvTKHpuw7AM1/JzJShZu0vkgf4D2CYgXBRA=
+Endpoint = www.theoltmanfamily.net:51280
+# This is the CIDR mask of the home network
+AllowedIPs = 10.0.0.0/20
+```
+
+Now you can import this conf file into NetworkManager.
