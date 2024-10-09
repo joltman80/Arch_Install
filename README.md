@@ -646,3 +646,58 @@ AllowedIPs = 10.0.0.0/20
 ```
 
 Now you can import this conf file into NetworkManager.
+
+## Install AppImage Launcher
+
+The following steps are pulled from [here](https://github.com/TheAssassin/AppImageLauncher/wiki).
+
+Run the following command to install AppImage Launcher from AUR
+
+```console
+yay -Sy appimagelauncher
+```
+
+After install edit the AIL settings file:
+
+```console
+nano ~/.config/appimagelauncher.cfg
+```
+
+Enter the following config:
+
+```console
+[AppImageLauncher]
+ destination = ~/Applications
+ enable_daemon = true
+```
+
+Verify that the appimagelauncherd is enabled and running:
+
+```console
+systemctl status --user appimagelauncherd
+```
+
+If the service isn't running, you need to enable it and start it:
+
+```console
+systemctl enable --user appimagelauncherd
+systemctl start --user appimagelauncherd
+systemctl status --user appimagelauncherd
+```
+
+You should now see the service running.
+
+Now, in GNOME application menu, you will see the AppImageLauncher application installed and ready to use.
+
+## Install Trezor Suite
+
+Download the Trezor Suite AppImage from [here](https://trezor.io/trezor-suite).  Place the AppImage file in the ~/Applications folder and appimagelauncherd will autodetect the AppImage and add it to GNOME Launcher.
+
+You will need to install the udev rules and restart udevadm.
+
+```console
+sudo curl https://data.trezor.io/udev/51-trezor.rules -o /etc/udev/rules.d/51-trezor.rules
+sudo udevadm control --reload-rules
+```
+
+You can now open the Trezor Suite application and connect your Trezor T to your laptop.
