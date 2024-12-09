@@ -424,7 +424,7 @@ makepkg -si
 ## Install AUR packages
 
 ```console
-yay -S 1password makemkv neo-matrix-git extension-manager ipmiview ttf-ms-win10 realvnc-vnc-viewer inxi vmware-vmrc visual-studio-code-bin skypeforlinux-stable-bin gnome-browser-connector IPMIviewer syncthing-gtk cnrdrvcups-lb sublime-text-4 flirc-bin superpaper-git webcamoid alac-git shntool teamviwer python37 python-yattag chirp-next mullvad-vpn libreoffice-extension-languagetool gnome-shell-extension-media-controls ocrmypdf mqtt-explorer free42 balena-etcher
+yay -S 1password makemkv neo-matrix-git extension-manager ipmiview ttf-ms-win10 realvnc-vnc-viewer inxi vmware-vmrc visual-studio-code-bin skypeforlinux-stable-bin gnome-browser-connector IPMIviewer syncthing-gtk cnrdrvcups-lb sublime-text-4 flirc-bin superpaper-git webcamoid alac-git shntool teamviwer python37 python-yattag chirp-next mullvad-vpn libreoffice-extension-languagetool gnome-shell-extension-media-controls ocrmypdf mqtt-explorer free42 balena-etcher zoom
 ```
 
 ## Enable/Start Mullvad VPN Service
