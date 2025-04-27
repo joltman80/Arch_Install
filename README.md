@@ -309,7 +309,7 @@ Find this line and uncomment:
 ## Install the software environment
 
 ```console
-pacman -S networkmanager network-manager-applet pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber firefox chromium ffmpeg openssl openssh htop wget iwd wireless_tools wpa_supplicant smartmontools xdg-utils fprintd xorg-server xorg-xinit mesa libva-mesa-driver libva-intel-driver intel-media-driver vulkan-intel gnome gnome-tweaks gdm gnome-software-packagekit-plugin gnome-firmware man-db man-pages bluez bluez-utils fuse htop iio-sensor-proxy intel-gpu-top mesa mesa-utils flatpak grub-customizer libva-utils mpv cifs-utils nfs-utils gvfs-smb seahorse gnome-connections vlc samba mkvtoolnix-gui mpv tlp ntfs-3g openvpn networkmanager-openvpn wireguard-tools hexchat wine winetricks wine-mono jre17-openjdk jdk17-openjdk icedtea-web syncthing cups cups-pdf signal-desktop gnome-sound-recorder gnome-disk-utility gparted digikam breeze-icons darktable yt-dlp picard mac cuetools pacman-contrib reflector firewalld inetutils wireshark p7zip libreoffice-fresh libreoffice-extension-texmaths libreoffice-extension-writer2latex ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g noto-fonts adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts hunspell hunspell-en_us hyphen hyphen-en libmythes mythes-en dnsutils dconf-editor kicad gimp pdfarranger transmission-remote-gtk tesseract tesseract-data-eng libratbag piper pdfarranger powertop exfat-utils
+pacman -S networkmanager network-manager-applet pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber firefox chromium ffmpeg openssl openssh htop wget iwd wireless_tools wpa_supplicant smartmontools xdg-utils fprintd xorg-server xorg-xinit mesa libva-mesa-driver libva-intel-driver intel-media-driver vulkan-intel gnome gnome-tweaks gdm gnome-software-packagekit-plugin gnome-firmware man-db man-pages bluez bluez-utils fuse htop iio-sensor-proxy intel-gpu-top mesa mesa-utils flatpak grub-customizer libva-utils mpv cifs-utils nfs-utils gvfs-smb seahorse gnome-connections vlc samba mkvtoolnix-gui mpv tlp ntfs-3g openvpn networkmanager-openvpn wireguard-tools hexchat wine winetricks wine-mono jre17-openjdk jdk17-openjdk icedtea-web syncthing cups cups-pdf signal-desktop gnome-sound-recorder gnome-disk-utility gparted digikam breeze-icons darktable yt-dlp picard mac cuetools pacman-contrib reflector firewalld inetutils wireshark p7zip libreoffice-fresh libreoffice-extension-texmaths libreoffice-extension-writer2latex ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g noto-fonts adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts hunspell hunspell-en_us hyphen hyphen-en libmythes mythes-en dnsutils dconf-editor kicad gimp pdfarranger transmission-remote-gtk tesseract tesseract-data-eng libratbag piper pdfarranger powertop exfat-utils nmap wol
 ```
 
 ## Install KiCad's official libraries as dependencies
@@ -631,7 +631,7 @@ In this file, paste in the following, making the necessary changes:
 [Interface]
 ## Local Address : A private IP address for wg0 interface.
 Address = 10.0.15.35/32
-ListenPort = 51280
+ListenPort = 51820
 DNS = 10.0.14.1
 
 ## local client privateky
@@ -640,12 +640,18 @@ PrivateKey = ENTER_PRIVATE_KEY_GEN'D_ABOVE HERE
 [Peer]
 # remote server public key
 PublicKey = tvfcv5AKDvTKHpuw7AM1/JzJShZu0vkgf4D2CYgXBRA=
-Endpoint = www.theoltmanfamily.net:51280
+Endpoint = www.theoltmanfamily.net:51820
 # This is the CIDR mask of the home network
 AllowedIPs = 10.0.0.0/20
 ```
 
-Now you can import this conf file into NetworkManager.
+Now you can import this conf file into NetworkManager:
+
+```console
+nmcli connection import type wireguard file wg0.conf
+nmcli connection modify wg0 connection.id "OltmanFamily WG0"
+nmcli connection modify "OltmanFamily WG0" autoconnect no
+```
 
 ## Install AppImage Launcher
 
