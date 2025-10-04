@@ -289,7 +289,7 @@ passwd administrator
 Create your user (UID=1001).
 
 ```console
-useradd -m -G wheel -s /bin/bash USER
+useradd -m -G wheel -s /bin/bash -u 1001 USER
 passwd USER
 ```
 
@@ -309,7 +309,7 @@ Find this line and uncomment:
 ## Install the software environment
 
 ```console
-pacman -S networkmanager network-manager-applet pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber firefox chromium ffmpeg openssl openssh htop wget iwd wireless_tools wpa_supplicant smartmontools xdg-utils fprintd xorg-server xorg-xinit mesa libva-mesa-driver libva-intel-driver intel-media-driver vulkan-intel gnome gnome-tweaks gdm gnome-software-packagekit-plugin gnome-firmware man-db man-pages bluez bluez-utils fuse htop iio-sensor-proxy intel-gpu-top mesa mesa-utils flatpak grub-customizer libva-utils mpv cifs-utils nfs-utils gvfs-smb seahorse gnome-connections vlc samba mkvtoolnix-gui mpv tlp ntfs-3g openvpn networkmanager-openvpn wireguard-tools hexchat wine winetricks wine-mono jre17-openjdk jdk17-openjdk icedtea-web syncthing cups cups-pdf signal-desktop gnome-sound-recorder gnome-disk-utility gparted digikam breeze-icons darktable yt-dlp picard mac cuetools pacman-contrib reflector firewalld inetutils wireshark p7zip libreoffice-fresh libreoffice-extension-texmaths libreoffice-extension-writer2latex ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g noto-fonts adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts hunspell hunspell-en_us hyphen hyphen-en libmythes mythes-en dnsutils dconf-editor kicad gimp pdfarranger transmission-remote-gtk tesseract tesseract-data-eng libratbag piper pdfarranger powertop exfat-utils nmap wol discord
+pacman -S networkmanager network-manager-applet pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber firefox chromium ffmpeg openssl openssh htop wget iwd wireless_tools wpa_supplicant smartmontools xdg-utils fprintd xorg-server xorg-xinit mesa libva-mesa-driver libva-intel-driver intel-media-driver vulkan-intel gnome gnome-tweaks gdm gnome-software-packagekit-plugin gnome-firmware man-db man-pages bluez bluez-utils fuse htop iio-sensor-proxy intel-gpu-top mesa mesa-utils flatpak grub-customizer libva-utils mpv cifs-utils nfs-utils gvfs-smb seahorse gnome-connections vlc samba mkvtoolnix-gui mpv tlp ntfs-3g openvpn networkmanager-openvpn wireguard-tools hexchat wine winetricks wine-mono jre17-openjdk jdk17-openjdk icedtea-web syncthing cups cups-pdf signal-desktop gnome-sound-recorder gnome-disk-utility gparted digikam breeze-icons darktable yt-dlp picard mac cuetools pacman-contrib reflector firewalld inetutils wireshark p7zip libreoffice-fresh libreoffice-extension-texmaths libreoffice-extension-writer2latex ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g noto-fonts adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts hunspell hunspell-en_us hyphen hyphen-en libmythes mythes-en dnsutils dconf-editor kicad gimp pdfarranger transmission-remote-gtk tesseract tesseract-data-eng libratbag piper pdfarranger powertop exfat-utils nmap wol discord rapid-photo-downloader intel-compute-runtime clinfo opencv
 ```
 
 ## Install KiCad's official libraries as dependencies
@@ -424,7 +424,7 @@ makepkg -si
 ## Install AUR packages
 
 ```console
-yay -S 1password makemkv neo-matrix-git extension-manager ipmiview ttf-ms-win10 realvnc-vnc-viewer inxi vmware-vmrc visual-studio-code-bin skypeforlinux-stable-bin gnome-browser-connector IPMIviewer syncthing-gtk cnrdrvcups-lb sublime-text-4 flirc-bin superpaper-git webcamoid alac-git shntool teamviwer python37 python-yattag chirp-next mullvad-vpn libreoffice-extension-languagetool gnome-shell-extension-media-controls ocrmypdf mqtt-explorer free42 zoom android-messages-desktop-bin
+yay -S 1password makemkv neo-matrix-git extension-manager ipmiview ttf-ms-win10 realvnc-vnc-viewer inxi vmware-vmrc visual-studio-code-bin skypeforlinux-stable-bin gnome-browser-connector IPMIviewer syncthing-gtk cnrdrvcups-lb sublime-text-4 flirc-bin superpaper-git webcamoid alac-git shntool teamviwer python37 python-yattag chirp-next mullvad-vpn libreoffice-extension-languagetool gnome-shell-extension-media-controls ocrmypdf mqtt-explorer free42 zoom android-messages-desktop-bin tesla_auth
 ```
 
 ## Enable/Start Mullvad VPN Service
@@ -655,7 +655,7 @@ nmcli connection modify "OltmanFamily WG0" autoconnect no
 
 ## Install AppImage Launcher
 
-The following steps are pulled from [here](https://github.com/TheAssassin/AppImageLauncher/wiki).
+The following steps are pulled from an individual's [Github](https://github.com/TheAssassin/AppImageLauncher/wiki).
 
 Run the following command to install AppImage Launcher from AUR
 
@@ -697,7 +697,7 @@ Now, in GNOME application menu, you will see the AppImageLauncher application in
 
 ## Install Trezor Suite
 
-Download the Trezor Suite AppImage from [here](https://trezor.io/trezor-suite).  Place the AppImage file in the ~/Applications folder and appimagelauncherd will autodetect the AppImage and add it to GNOME Launcher.
+Download the [Trezor Suite AppImage](https://trezor.io/trezor-suite).  Place the AppImage file in the ~/Applications folder and appimagelauncherd will autodetect the AppImage and add it to GNOME Launcher.
 
 You will need to install the udev rules and restart udevadm.
 
