@@ -250,13 +250,13 @@ In the default grub config, find the GRUB_CMDLINE_LINUX and add (with quotes):
 It should look like this:
 
 ```console
-GRUB_CMDLINE_LINUX="cryptdevice=UUID=e1fb5806-1f0a-4edb-bbd4-855e2a6a4c2e:cryptroot
+GRUB_CMDLINE_LINUX="ccryptdevice=UUID=e1fb5806-1f0a-4edb-bbd4-855e2a6a4c2e:cryptroot:allow-discards root=/dev/mapper/cryptroot resume=UUID=967555c6-1617-4dd2-acd7-207a79a74dc5 resume_offset=192020480"
 ```
 
 Replace the default grub line with this:
 
 ```console
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet mem_sleep_default=deep nvme.noacpi=1"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet mem_sleep_default=deep nvme.noacpi=1 intel_iommu=on xe.max_vfs=7 xe.force_probe=46a6 module_blacklist=i915"
 ```
 
 Change the grub resolution so that you can actually read the text on the screen:
